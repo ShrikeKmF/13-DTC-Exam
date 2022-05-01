@@ -1,5 +1,6 @@
-""" Help GUI Version 1
+""" Help GUI
 Author: Jono Schwass
+Version: 1
 """
 
 # Imports
@@ -17,7 +18,7 @@ class Convertor:
                                      bg=background_color, pady=10)
         self.convertor_frame.grid()
 
-        # Temperature Convertor
+        # Title
         self.temp_convertor_label = Label(self.convertor_frame,
                                           text="Te Reo Maori Quiz",
                                           font=("Arial", "16", "bold"),
@@ -25,11 +26,13 @@ class Convertor:
                                           padx=10, pady=10)
         self.temp_convertor_label.grid(row=0)
 
+        # Help Button
         self.help_button = Button(self.convertor_frame, text="Help",
                                   font=("Arial", "14"),
                                   padx=10, pady=10, command=self.help)
         self.help_button.grid(row=1)
 
+    # Help Command
     def help(self):
         print("Log: Help")
         get_help = Help(self)
@@ -38,17 +41,20 @@ class Convertor:
 
 class Help:
     def __init__(self, partner):
+        # Formatting
         background = "orange"
 
         partner.help_button.config(state=DISABLED)
 
         self.help_box = Toplevel()
 
+        # Stop unwanted Windows
         self.help_box.protocol('WM_DELETE_WINDOWS', partial(self.close_help, partner))
 
         self.help_frame = Frame(self.help_box, width=300, bg=background)
         self.help_frame.grid()
 
+        # Help Title
         self.how_heading = Label(self.help_frame, text="Help",
                                  font="arial 16 bold", bg=background)
         self.how_heading.grid(row=0)
@@ -57,11 +63,13 @@ class Help:
                                width=40, bg=background, wrap=250)
         self.help_text.grid(row=1)
 
-        self.dismiss_btn = Button(self.help_frame, text="Dismiss", width=10,
+        # Close Button
+        self.dismiss_btn = Button(self.help_frame, text="Closs", width=10,
                                   bg="orange", font="Arial 10 bold",
                                   command=partial(self.close_help, partner))
         self.dismiss_btn.grid(row=2, pady=10)
 
+    # Close Command
     def close_help(self, partner):
         partner.help_button.config(state=NORMAL)
         self.help_box.destroy()

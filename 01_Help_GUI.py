@@ -31,7 +31,7 @@ class Convertor:
         self.help_button.grid(row=1)
 
     def help(self):
-        print("You asked for help")
+        print("Log: Help")
         get_help = Help(self)
         get_help.help_text.configure(text="Help text goes here")
 
@@ -50,7 +50,7 @@ class Help:
         self.help_frame.grid()
 
         self.how_heading = Label(self.help_frame, text="Help",
-                                 font="arial 10 bold", bg=background)
+                                 font="arial 16 bold", bg=background)
         self.how_heading.grid(row=0)
 
         self.help_text = Label(self.help_frame, text="", justify="left",

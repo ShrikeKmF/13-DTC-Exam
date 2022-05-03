@@ -6,6 +6,10 @@ Version: 1
 # Imports
 from tkinter import *
 
+# Testing
+questionNum = 1
+questionQ1 = "What is the Maori word for 12"
+
 
 class Convertor:
     def __init__(self):
@@ -20,21 +24,51 @@ class Convertor:
         # Title
         self.temp_convertor_label = Label(self.convertor_frame,
                                           text="Te Reo Maori Quiz",
-                                          font=("Arial", "16", "bold"),
+                                          font=("Arial", "24", "bold"),
                                           bg=background_color,
                                           padx=10, pady=10)
-        self.temp_convertor_label.grid(row=0)
+        self.temp_convertor_label.grid(row=0, column=0)
 
-        # Start Button
-        self.b1_button = Button(self.convertor_frame, text="Start",
-                                  font=("Arial", "14"),
-                                  padx=10, pady=10, command=self.start)
-        self.b1_button.grid(row=1, column=0)
+        # Question Number
+        self.temp_convertor_label = Label(self.convertor_frame,
+                                          text="Question {}".format(
+                                              questionNum),
+                                          font=("Arial", "12", "bold"),
+                                          bg=background_color,
+                                          padx=10, pady=10)
+        self.temp_convertor_label.grid(row=1, column=0)
 
+        # Question Text
+        self.temp_convertor_label = Label(self.convertor_frame,
+                                          text=questionQ1,
+                                          font=("Arial", "12", "bold"),
+                                          bg=background_color,
+                                          padx=10, pady=10)
+        self.temp_convertor_label.grid(row=2, column=0)
 
-    # Start Command
-    def start(self):
-        print("Log: Start Quiz")
+        # Quiz Frame
+        self.quiz_frame = Frame(self.convertor_frame,
+                                width=300, height=300,
+                                bg=background_color, pady=10)
+        self.quiz_frame.grid()
+
+        # Quiz Buttons
+        self.b1_button = Button(self.quiz_frame, text="B1",
+                                font=("Arial", "10"),
+                                padx=20, pady=10)
+        self.b1_button.grid(row=1, column=1)
+        self.b2_button = Button(self.quiz_frame, text="B2",
+                                font=("Arial", "10"),
+                                padx=20, pady=10)
+        self.b2_button.grid(row=1, column=2)
+        self.b3_button = Button(self.quiz_frame, text="B3",
+                                font=("Arial", "10"),
+                                padx=20, pady=10)
+        self.b3_button.grid(row=2, column=1)
+        self.b4_button = Button(self.quiz_frame, text="B4",
+                                font=("Arial", "10"),
+                                padx=20, pady=10)
+        self.b4_button.grid(row=2, column=2)
 
 
 # Main Retinue

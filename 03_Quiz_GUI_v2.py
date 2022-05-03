@@ -1,10 +1,11 @@
 """ Quiz GUI
 Author: Jono Schwass
-Version: 1
+Version: 2
 """
 
 # Imports
 from tkinter import *
+from functools import partial  # to prevent unwanted windows
 
 # Testing
 questionNum = 1
@@ -18,13 +19,13 @@ Ans4 = "18"
 
 class Convertor:
     def __init__(self):
-        # Background Formatting
-        background_color = "light blue"
-        background_color2 = "light blue"
-        b1bg = "red"
-        b2bg = "blue"
-        b3bg = "yellow"
-        b4bg = "green"
+        background_color = "light blue"  # Background Color Formatting
+        background_color2 = "light blue"  # Background Color Formatting
+        b1bg = "red"  # Button Color Formatting
+        b2bg = "blue"  # Button Color Formatting
+        b3bg = "yellow"  # Button Color Formatting
+        b4bg = "green"  # Button Color Formatting
+        helpbg = "orange"  # Help Background Color Formatting
 
         # Main Screen
         self.convertor_frame = Frame(width=300, height=300,
@@ -79,6 +80,60 @@ class Convertor:
                                 font=("Arial", "10"),
                                 padx=30, pady=10, bg=b4bg)
         self.b4_button.grid(row=2, column=2)
+
+        # Help Button
+        self.help_button = Button(self.convertor_frame, text="Help",
+                                  font=("Arial", "14"),
+                                  padx=20, pady=10, command=self.help,
+                                  bg=helpbg)
+        self.help_button.grid(row=5, column=0)
+
+    # Help Command Function
+    def help(self):
+        print("Log: Help")
+        get_help = Help(self)
+        get_help.help_text.configure(text="Help text goes here")
+
+
+# Help Screen Class
+class Help:
+    def __init__(self, partner):
+        # Formatting background
+        background = "orange"
+
+        partner.help_button.config(state=DISABLED)
+
+        # Forcing to Top Level
+        self.help_box = Toplevel()
+
+        # Stop unwanted Windows
+        self.help_box.protocol('WM_DELETE_WINDOWS',
+                               partial(self.close_help, partner))
+
+        # Frame Creation
+        self.help_frame = Frame(self.help_box, width=300, bg=background)
+        self.help_frame.grid()
+
+        # Help Title
+        self.how_heading = Label(self.help_frame, text="Help",
+                                 font="arial 16 bold", bg=background)
+        self.how_heading.grid(row=0)
+
+        # Help Text
+        self.help_text = Label(self.help_frame, text="", justify="left",
+                               width=40, bg=background, wrap=250)
+        self.help_text.grid(row=1)
+
+        # Close Button
+        self.dismiss_btn = Button(self.help_frame, text="Close", width=10,
+                                  bg="orange", font="Arial 10 bold",
+                                  command=partial(self.close_help, partner))
+        self.dismiss_btn.grid(row=2, pady=10)
+
+    # Close Command
+    def close_help(self, partner):
+        partner.help_button.config(state=NORMAL)
+        self.help_box.destroy()
 
 
 # Main Retinue

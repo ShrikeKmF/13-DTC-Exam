@@ -1,6 +1,6 @@
 """ Quiz GUI
 Author: Jono Schwass
-Version: 2
+Version: 3
 """
 
 # Imports
@@ -18,11 +18,15 @@ Ans4 = 18
 userAns = 0
 
 
-def AnswerCheckker(userAns):
+def AnswerChecker(userAns, questionNum):
     if userAns == questionAns:
         print("Log: Ans Correct")
+        questionNum += 1
+        print("Log: Question Num {}".format(questionNum))
     else:
         print("Log: Ans Incorrect")
+        questionNum += 1
+        print("Log: Question Num {}".format(questionNum))
 
 
 class Convertor:
@@ -110,22 +114,22 @@ class Convertor:
     def answerB1(self):  # Button 1 Answer
         print("Log: Answer 1")
         userAns = Ans1
-        AnswerCheckker(userAns)
+        AnswerChecker(userAns, questionNum)
 
     def answerB2(self):  # Button 2 Answer
         print("Log: Answer 2")
         userAns = Ans2
-        AnswerCheckker(userAns)
+        AnswerChecker(userAns, questionNum)
 
     def answerB3(self):  # Button 3 Answer
         print("Log: Answer 3")
         userAns = Ans3
-        AnswerCheckker(userAns)
+        AnswerChecker(userAns, questionNum)
 
     def answerB4(self):  # Button 4 Answer
         print("Log: Answer 4")
         userAns = Ans4
-        AnswerCheckker(userAns)
+        AnswerChecker(userAns, questionNum)
 
 
 # Help Screen Class

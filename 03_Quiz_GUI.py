@@ -33,7 +33,7 @@ class Convertor:
 
         # Title
         self.temp_convertor_label = Label(self.convertor_frame,
-                                          text="Te Reo Maori Quiz",
+                                          text="Te Reo Maori Number Quiz",
                                           font=("Arial", "24", "bold"),
                                           bg=background_color,
                                           padx=50, pady=10)

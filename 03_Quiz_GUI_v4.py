@@ -1,6 +1,6 @@
 """ Quiz GUI
 Author: Jono Schwass
-Version: 3
+Version: 4
 """
 
 # Imports
@@ -38,7 +38,7 @@ def AnswerChecker(userAns):
 
 
 if state == 1:
-    class Convertor:
+    class quiz:
         def __init__(self):
             background_color = "light blue"  # Background Color Formatting
             background_color2 = "light blue"  # Background Color Formatting
@@ -49,20 +49,20 @@ if state == 1:
             helpbg = "orange"  # Help Background Color Formatting
 
             # Main Screen
-            self.convertor_frame = Frame(width=300, height=300,
+            self.quiz_frame = Frame(width=300, height=300,
                                          bg=background_color, pady=10)
-            self.convertor_frame.grid()
+            self.quiz_frame.grid()
 
             # Title
-            self.temp_convertor_label = Label(self.convertor_frame,
+            self.temp_title_label = Label(self.quiz_frame,
                                               text="Te Reo Maori Number Quiz",
                                               font=("Arial", "24", "bold"),
                                               bg=background_color,
                                               padx=50, pady=10)
-            self.temp_convertor_label.grid(row=0, column=0)
+            self.temp_title_label.grid(row=0, column=0)
 
             # Question Number
-            self.temp_questionnum_label = Label(self.convertor_frame,
+            self.temp_questionnum_label = Label(self.quiz_frame,
                                               text="Question {}".format(
                                                   (questionNum + 1)),
                                               font=("Arial", "12", "bold"),
@@ -71,7 +71,7 @@ if state == 1:
             self.temp_questionnum_label.grid(row=1, column=0)
 
             # Question Text
-            self.temp_questiontxt_label = Label(self.convertor_frame,
+            self.temp_questiontxt_label = Label(self.quiz_frame,
                                               text=QuestionTxtList[
                                                   questionNum],
                                               font=("Arial", "12", "bold"),
@@ -80,35 +80,35 @@ if state == 1:
             self.temp_questiontxt_label.grid(row=2, column=0)
 
             # Quiz Buttons Frame
-            self.quiz_frame = Frame(self.convertor_frame,
+            self.button_frame = Frame(self.quiz_frame,
                                     width=300, height=300,
                                     bg=background_color2, pady=10)
-            self.quiz_frame.grid()
+            self.button_frame.grid()
 
             # Quiz Buttons 1-4
-            self.b1_button = Button(self.quiz_frame, text=b1List[questionNum],
+            self.b1_button = Button(self.button_frame, text=b1List[questionNum],
                                     font=("Arial", "10"),
                                     padx=30, pady=10, bg=b1bg,
                                     command=self.answerB1)
             self.b1_button.grid(row=1, column=1)
-            self.b2_button = Button(self.quiz_frame, text=b2List[questionNum],
+            self.b2_button = Button(self.button_frame, text=b2List[questionNum],
                                     font=("Arial", "10"),
                                     padx=30, pady=10, bg=b2bg,
                                     command=self.answerB2)
             self.b2_button.grid(row=1, column=2)
-            self.b3_button = Button(self.quiz_frame, text=b3List[questionNum],
+            self.b3_button = Button(self.button_frame, text=b3List[questionNum],
                                     font=("Arial", "10"),
                                     padx=30, pady=10, bg=b3bg,
                                     command=self.answerB3)
             self.b3_button.grid(row=2, column=1)
-            self.b4_button = Button(self.quiz_frame, text=b4List[questionNum],
+            self.b4_button = Button(self.button_frame, text=b4List[questionNum],
                                     font=("Arial", "10"),
                                     padx=30, pady=10, bg=b4bg,
                                     command=self.answerB4)
             self.b4_button.grid(row=2, column=2)
 
             # Help Button
-            self.help_button = Button(self.convertor_frame, text="Help",
+            self.help_button = Button(self.quiz_frame, text="Help",
                                       font=("Arial", "14"),
                                       padx=20, pady=10, command=self.help,
                                       bg=helpbg)
@@ -200,6 +200,6 @@ if state == 1:
 if __name__ == "__main__":
     root = Tk()
     root.title("Te Reo Maori Quiz")
-    something = Convertor()
+    something = quiz()
     root.mainloop()
 print("Log: Number Correct", correctAns, "/ 12")

@@ -10,12 +10,12 @@ from functools import partial  # to prevent unwanted windows
 # Testing
 questionNum = 0
 QuestionTxtList = ["What number does this Maori word mean? 'Tekau mā'"
-    , "What number does this Maori word mean? 'Tekau'"]
-questionAnsList = [12, 10]
-Ans1 = 10
-Ans2 = 12
-Ans3 = 22
-Ans4 = 18
+    , "What number does this Maori word mean? 'Tekau'", ]
+questionAnsList = [12, 10, ]
+b1List = [10, 14, ]
+b2List = [12, 13, ]
+b3List = [22, 10, ]
+b4List = [18, 19, ]
 userAns = 0
 correctAns = 0
 state = 1
@@ -62,22 +62,22 @@ if state == 1:
             self.temp_convertor_label.grid(row=0, column=0)
 
             # Question Number
-            self.temp_convertor_label = Label(self.convertor_frame,
+            self.temp_questionnum_label = Label(self.convertor_frame,
                                               text="Question {}".format(
                                                   (questionNum + 1)),
                                               font=("Arial", "12", "bold"),
                                               bg=background_color,
                                               padx=10, pady=10)
-            self.temp_convertor_label.grid(row=1, column=0)
+            self.temp_questionnum_label.grid(row=1, column=0)
 
             # Question Text
-            self.temp_convertor_label = Label(self.convertor_frame,
+            self.temp_questiontxt_label = Label(self.convertor_frame,
                                               text=QuestionTxtList[
                                                   questionNum],
                                               font=("Arial", "12", "bold"),
                                               bg=background_color,
                                               padx=10, pady=10)
-            self.temp_convertor_label.grid(row=2, column=0)
+            self.temp_questiontxt_label.grid(row=2, column=0)
 
             # Quiz Buttons Frame
             self.quiz_frame = Frame(self.convertor_frame,
@@ -86,22 +86,22 @@ if state == 1:
             self.quiz_frame.grid()
 
             # Quiz Buttons 1-4
-            self.b1_button = Button(self.quiz_frame, text=Ans1,
+            self.b1_button = Button(self.quiz_frame, text=b1List[questionNum],
                                     font=("Arial", "10"),
                                     padx=30, pady=10, bg=b1bg,
                                     command=self.answerB1)
             self.b1_button.grid(row=1, column=1)
-            self.b2_button = Button(self.quiz_frame, text=Ans2,
+            self.b2_button = Button(self.quiz_frame, text=b2List[questionNum],
                                     font=("Arial", "10"),
                                     padx=30, pady=10, bg=b2bg,
                                     command=self.answerB2)
             self.b2_button.grid(row=1, column=2)
-            self.b3_button = Button(self.quiz_frame, text=Ans3,
+            self.b3_button = Button(self.quiz_frame, text=b3List[questionNum],
                                     font=("Arial", "10"),
                                     padx=30, pady=10, bg=b3bg,
                                     command=self.answerB3)
             self.b3_button.grid(row=2, column=1)
-            self.b4_button = Button(self.quiz_frame, text=Ans4,
+            self.b4_button = Button(self.quiz_frame, text=b4List[questionNum],
                                     font=("Arial", "10"),
                                     padx=30, pady=10, bg=b4bg,
                                     command=self.answerB4)
@@ -123,26 +123,37 @@ if state == 1:
         # Answer Command Function 1-4
         def answerB1(self):  # Button 1 Answer
             print("Log: Answer 1")
-            userAns = Ans1
+            userAns = b1List[questionNum]
             AnswerChecker(userAns)
+            self.UpdateTxt()
 
         def answerB2(self):  # Button 2 Answer
             print("Log: Answer 2")
-            userAns = Ans2
+            userAns = b2List[questionNum]
             AnswerChecker(userAns)
+            self.UpdateTxt()
 
         def answerB3(self):  # Button 3 Answer
             global QuestionTxt
             global questionAns
             print("Log: Answer 3")
-            userAns = Ans3
+            userAns = b3List[questionNum]
             AnswerChecker(userAns)
+            self.UpdateTxt()
 
         def answerB4(self):  # Button 4 Answer
             print("Log: Answer 4")
-            userAns = Ans4
+            userAns = b4List[questionNum]
             AnswerChecker(userAns)
+            self.UpdateTxt()
 
+        def UpdateTxt(self):
+            self.temp_questiontxt_label['text'] = QuestionTxtList[questionNum]
+            self.temp_questionnum_label['text'] = "Question", questionNum + 1
+            self.b1_button['text'] = b1List[questionNum]
+            self.b2_button['text'] = b2List[questionNum]
+            self.b3_button['text'] = b3List[questionNum]
+            self.b4_button['text'] = b4List[questionNum]
 
     # Help Screen Class
     class Help:
@@ -191,4 +202,4 @@ if __name__ == "__main__":
     root.title("Te Reo Maori Quiz")
     something = Convertor()
     root.mainloop()
-print("Number Correct", correctAns, "/ 12")
+print("Log: Number Correct", correctAns, "/ 12")

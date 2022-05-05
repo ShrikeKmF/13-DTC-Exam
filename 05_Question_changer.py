@@ -17,7 +17,12 @@ Ans4 = 18
 userAns = 0
 print(questionAnsList)
 
-QuestionTxt = QuestionTxtList[questionNum]
-print(QuestionTxt)
-questionAns = questionAnsList[questionNum]
-print(questionAns)
+
+def questionChanger():
+    QuestionTxt = QuestionTxtList[questionNum]
+    print("log: ",QuestionTxt)
+    questionAns = questionAnsList[questionNum]
+    print("Log: ",questionAns)
+
+
+questionChanger()

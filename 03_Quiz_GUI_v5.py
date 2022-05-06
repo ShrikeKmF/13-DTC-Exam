@@ -1,6 +1,6 @@
 """ Quiz GUI
 Author: Jono Schwass
-Version: 4
+Version: 5
 """
 
 # Imports
@@ -18,7 +18,7 @@ b3List = [22, 10, ]
 b4List = [18, 19, ]
 userAns = 0
 correctAns = 0
-state = 1
+state = 0
 
 
 # Answer Checker
@@ -41,6 +41,39 @@ def AnswerChecker(userAns):
 # Changing gamestate once max question have been reached
 if questionNum == 11:
     state = 2
+
+if state == 0:
+    class start:
+        def __init__(self):
+            # Background Formatting
+            background_color = "light blue"
+
+            # Main Screen
+            self.start_frame = Frame(width=300, height=300,
+                                         bg=background_color, pady=10)
+            self.start_frame.grid()
+
+            # Title
+            self.temp_convertor_label = Label(self.start_frame,
+                                              text="Te Reo Maori Quiz",
+                                              font=("Arial", "16", "bold"),
+                                              bg=background_color,
+                                              padx=10, pady=10)
+            self.temp_convertor_label.grid(row=0)
+
+            # Start Button
+            self.start_button = Button(self.start_frame, text="Start",
+                                      font=("Arial", "14"),
+                                      padx=10, pady=10, command=self.startQuiz)
+            self.start_button.grid(row=1)
+
+        # Start Command
+        def startQuiz(self):
+            global state
+            print("Log: Start Quiz")
+            state = 1
+            print("Log:", state)
+
 
 if state == 1:
     class quiz:
@@ -210,6 +243,6 @@ if state == 1:
 if __name__ == "__main__":
     root = Tk()
     root.title("Te Reo Maori Quiz")
-    something = quiz()
+    something = start()
     root.mainloop()
 print("Log: Number Correct", correctAns, "/ 12")

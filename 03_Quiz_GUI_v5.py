@@ -44,7 +44,7 @@ class Start:
 
         # Main Screen
         self.start_frame = Frame(width=300, height=300,
-                                     bg=background_color, pady=10)
+                                 bg=background_color, pady=10)
         self.start_frame.grid()
 
         # Title
@@ -57,8 +57,8 @@ class Start:
 
         # Start Button
         self.start_button = Button(self.start_frame, text="Start",
-                                  font=("Arial", "14"),
-                                  padx=10, pady=10, command=self.startQuiz)
+                                   font=("Arial", "14"),
+                                   padx=10, pady=10, command=self.startQuiz)
         self.start_button.grid(row=1)
 
     # Start Command
@@ -230,6 +230,7 @@ class Help:
     def close_help(self, partner):
         partner.help_button.config(state=NORMAL)
         self.help_box.destroy()
+
 
 # Main Retinue
 if __name__ == "__main__":

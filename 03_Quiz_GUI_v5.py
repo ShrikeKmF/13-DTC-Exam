@@ -2,6 +2,11 @@
 Author: Jono Schwass
 Version: 5
 """
+# Print log Start
+print("****************\nWelcome to the Te Reo Maori Quiz")
+print("All actions taken in the program will be logged in here")
+print("Created by Jono Schwass\nVersion 5")
+print("****************")
 
 # Imports
 from tkinter import *
@@ -10,14 +15,24 @@ from functools import partial  # to prevent unwanted windows
 # Testing
 questionNum = 0
 QuestionTxtList = ["What number does this Maori word mean? 'Tekau mā'"
-    , "What number does this Maori word mean? 'Tekau'", ]
-questionAnsList = [12, 10, ]
-b1List = [10, 14, ]
-b2List = [12, 13, ]
-b3List = [22, 10, ]
-b4List = [18, 19, ]
+, "What number does this Maori word mean? 'Tekau'"
+, "What number does this Maori word mean? 'rua tekau mā rima'"
+, "What number does this Maori word mean? 'tekau mā ono'"
+, "What number does this Maori word mean? 'toru tekau'"
+, "What number does this Maori word mean? 'tekau mā iwa'"
+, "What number does this Maori word mean? 'rima tekau'"
+, "What number does this Maori word mean? ''rua tekau mā toru'"
+, "What number does this Maori word mean? 'rua tekau mā waru'"
+, "What number does this Maori word mean? 'toru tekau mā iwa'"
+                   ,"END"]
+questionAnsList = [12, 10, 25, 16, 30, 19, 50, 23, 28, 39, 11]
+b1List = [10, 14, 22, 39, 33, 39, 11, 13, 28, 43, 11]
+b2List = [12, 13, 25, 15, 30, 18, 22, 28, 15, 26, 11]
+b3List = [22, 10, 42, 25, 50, 19, 40, 25, 39, 15, 11]
+b4List = [18, 19, 12, 16, 44, 22, 50, 23, 21, 39, 11]
 userAns = 0
 correctAns = 0
+maxQuestion = 10
 
 
 # Answer Checker
@@ -41,6 +56,8 @@ class Start:
     def __init__(self):
         # Background Formatting
         background_color = "light blue"
+        helpbg = "orange"  # Help Background Color Formatting
+        start_buttonbg = "light green"  # to distinguish the buttons better
 
         # Main Screen
         self.start_frame = Frame(width=300, height=300,
@@ -55,11 +72,38 @@ class Start:
                                           padx=10, pady=10)
         self.temp_convertor_label.grid(row=0)
 
+        # Welcome Msg
+        self.temp_welcome_msg_label = Label(self.start_frame,
+                                            text="Welcome to the Teo Reo "
+                                                 "Maori Quiz. \nMade by Jono"
+                                                 " Schwass",
+                                            font=("Arial", "12"),
+                                            bg=background_color,
+                                            padx=10, pady=10)
+        self.temp_welcome_msg_label.grid(row=1)
+
+        self.button_frame = Frame(self.start_frame, width=300, height=300,
+                                  bg="light blue", pady=10)
+        self.button_frame.grid()
+
         # Start Button
-        self.start_button = Button(self.start_frame, text="Start",
-                                   font=("Arial", "14"),
-                                   padx=10, pady=10, command=self.startQuiz)
-        self.start_button.grid(row=1)
+        self.start_button = Button(self.button_frame, text="Start",
+                                   font=("Arial", "14"), bg=start_buttonbg,
+                                   padx=20, pady=10, command=self.startQuiz)
+        self.start_button.grid(row=0, column=0)
+
+        # Help Button
+        self.help_button = Button(self.button_frame, text="Help",
+                                  font=("Arial", "14"),
+                                  padx=20, pady=10, command=self.help,
+                                  bg=helpbg)
+        self.help_button.grid(row=0, column=1)
+
+    # Help Command Function
+    def help(self):
+        print("Log: Help")
+        get_help = Help(self)
+        get_help.help_text.configure(text="Help text goes here")
 
     # Start Command
     def startQuiz(self):
@@ -160,12 +204,20 @@ class Quiz:
         userAns = b1List[questionNum]
         AnswerChecker(userAns)
         self.UpdateTxt()
+        if questionNum == maxQuestion:
+            self.quiz_frame.destroy()
+            self.newWindow = End()
+            print("Log: End Quiz")
 
     def answerB2(self):  # Button 2 Answer
         print("Log: Answer 2")
         userAns = b2List[questionNum]
         AnswerChecker(userAns)
         self.UpdateTxt()
+        if questionNum == maxQuestion:
+            self.quiz_frame.destroy()
+            self.newWindow = End()
+            print("Log: End Quiz")
 
     def answerB3(self):  # Button 3 Answer
         global QuestionTxt
@@ -174,12 +226,20 @@ class Quiz:
         userAns = b3List[questionNum]
         AnswerChecker(userAns)
         self.UpdateTxt()
+        if questionNum == maxQuestion:
+            self.quiz_frame.destroy()
+            self.newWindow = End()
+            print("Log: End Quiz")
 
     def answerB4(self):  # Button 4 Answer
         print("Log: Answer 4")
         userAns = b4List[questionNum]
         AnswerChecker(userAns)
         self.UpdateTxt()
+        if questionNum == maxQuestion:
+            self.quiz_frame.destroy()
+            self.newWindow = End()
+            print("Log: End Quiz")
 
     def UpdateTxt(self):
         self.temp_questiontxt_label['text'] = QuestionTxtList[questionNum]
@@ -232,10 +292,50 @@ class Help:
         self.help_box.destroy()
 
 
+class End:
+    def __init__(self):
+        # Background Formatting
+        background_color = "light blue"
+
+        # Main Screen
+        self.end_frame = Frame(width=300, height=300,
+                               bg=background_color, pady=10)
+        self.end_frame.grid()
+
+        # Title
+        self.temp_title_end_label = Label(self.end_frame,
+                                          text="Te Reo Maori Quiz",
+                                          font=("Arial", "16", "bold"),
+                                          bg=background_color,
+                                          padx=10, pady=10)
+        self.temp_title_end_label.grid(row=0)
+
+        self.temp_num_correct_label = Label(self.end_frame,
+                                            text="Number Correct {} / "
+                                                 "{}".format(correctAns,
+                                                             questionNum),
+                                            font=("Arial", "12"),
+                                            bg=background_color,
+                                            padx=10, pady=10)
+        self.temp_num_correct_label.grid(row=1)
+
+        # Close Button
+        self.end_button = Button(self.end_frame, text="Close",
+                                 font=("Arial", "14"),
+                                 padx=10, pady=10, command=self.endQuiz)
+        self.end_button.grid(row=2)
+
+    # end Command
+    def endQuiz(self):
+        self.end_frame.destroy()
+        print("Log: Close Quiz")
+        print("Log: Number Correct", correctAns, "/", questionNum)
+        quit()
+
+
 # Main Retinue
 if __name__ == "__main__":
     root = Tk()
     root.title("Te Reo Maori Quiz")
     something = Start()
     root.mainloop()
-print("Log: Number Correct", correctAns, "/ 12")

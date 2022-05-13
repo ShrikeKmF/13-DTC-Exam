@@ -276,7 +276,7 @@ class Help:
 
         # Help Text
         self.help_text = Label(self.help_frame, text="", justify="left",
-                               width=40, bg=background, wrap=250)
+                               width=40, bg=background)
         self.help_text.grid(row=1)
 
         # Close Button

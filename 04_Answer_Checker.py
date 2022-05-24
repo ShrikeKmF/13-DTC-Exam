@@ -11,12 +11,12 @@ Ans1 = 10
 Ans2 = 12
 Ans3 = 22
 Ans4 = 18
-userAns = 0
+userAns = 12
 
 
 def AnswerChecker(userAns, questionNum):
     if userAns == questionAns:
-        print("Log: Ans Correct")
+        print("Log: Ans Incorrect")
         questionNum += 1
         print("Log: Question Num {}".format(questionNum))
     else:

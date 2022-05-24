@@ -1,6 +1,6 @@
 """ Quiz GUI
 Author: Jono Schwass
-Version: 5
+Version: 5 (Final)
 """
 # Print log Start
 print("****************\nWelcome to the Te Reo Maori Quiz")

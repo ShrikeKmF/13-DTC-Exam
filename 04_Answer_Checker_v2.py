@@ -21,7 +21,7 @@ b1List = [10, 14, 22, 39, 33, 39, 11, 13, 28, 43, 11]
 b2List = [12, 13, 25, 15, 30, 18, 22, 28, 15, 26, 11]
 b3List = [22, 10, 42, 25, 50, 19, 40, 25, 39, 15, 11]
 b4List = [18, 19, 12, 16, 44, 22, 50, 23, 21, 39, 11]
-userAns = 0
+userAns = 12
 correctAns = 0
 maxQuestion = 10
 
@@ -36,9 +36,9 @@ def AnswerChecker(userAns):
     else:
         print("Log: Ans Incorrect") # Printing Log Msgs
     print("Log: Old Question Num {}".format(questionNum)) # Printing Log Msgs
+    questionNum += 1
     print("Log: New Question Num {}".format(questionNum)) # Printing Log Msgs
     print("\n")
-    questionNum += 1
 
 
 AnswerChecker(userAns)

@@ -1,30 +1,35 @@
 """ Quiz GUI
 Author: Jono Schwass
-Version: 5 (Final)
+Version: 6 (Final)
 """
+
+# Imports
+from tkinter import *  # GUI Import
+from functools import partial  # to prevent unwanted windows
+
 # Print log Start
 print("****************\nWelcome to the Te Reo Maori Quiz")
 print("All actions taken in the program will be logged in here")
-print("Created by Jono Schwass\nVersion 5")
+print("Created by Jono Schwass\nVersion 6")
 print("****************")
-
-# Imports
-from tkinter import *
-from functools import partial  # to prevent unwanted windows
 
 # Setting the Quiz Questions
 # Requires 1 item after the questions E.G. "END"
 QuestionTxtList = ["What number does this Maori word mean? 'Tekau mā'"
-    , "What number does this Maori word mean? 'Tekau'"
-    , "What number does this Maori word mean? 'rua tekau mā rima'"
-    , "What number does this Maori word mean? 'tekau mā ono'"
-    , "What number does this Maori word mean? 'toru tekau'"
-    , "What number does this Maori word mean? 'tekau mā iwa'"
-    , "What number does this Maori word mean? 'rima tekau'"
-    , "What number does this Maori word mean? ''rua tekau mā toru'"
-    , "What number does this Maori word mean? 'rua tekau mā waru'"
-    , "What number does this Maori word mean? 'toru tekau mā iwa'"
-    , "END"]
+                   , "What number does this Maori word mean? "
+                     "'rua tekau mā rima'"
+                   , "What number does this Maori word mean?'Tekau'"
+                   , "What number does this Maori word mean? 'tekau mā ono'"
+                   , "What number does this Maori word mean? 'toru tekau'"
+                   , "What number does this Maori word mean? 'tekau mā iwa'"
+                   , "What number does this Maori word mean? 'rima tekau'"
+                   , "What number does this Maori word mean? "
+                     "''rua tekau mā toru'"
+                   , "What number does this Maori word mean? "
+                     "'rua tekau mā waru'"
+                   , "What number does this Maori word mean? "
+                     "'toru tekau mā iwa'"
+                   , "END"]
 
 # Setting the Quiz and Button Answers
 # Requires 1 item at the end of list after Answers E.G. "99"

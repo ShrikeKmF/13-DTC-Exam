@@ -15,7 +15,7 @@ print("****************")
 
 # Setting the Quiz Questions
 # Requires 1 item after the questions E.G. "END"
-QuestionTxtList = ["What number does this Maori word mean? 'Tekau mā'"
+QuestionTxtList = ["What number does this Maori word mean? 'Tekau mā rua'"
                    , "What number does this Maori word mean? "
                      "'rua tekau mā rima'"
                    , "What number does this Maori word mean?'Tekau'"
@@ -34,10 +34,10 @@ QuestionTxtList = ["What number does this Maori word mean? 'Tekau mā'"
 # Setting the Quiz and Button Answers
 # Requires 1 item at the end of list after Answers E.G. "99"
 # 99 is used as an end function not an Answer
-questionAnsList = [12, 10, 25, 16, 30, 19, 50, 23, 28, 39, 99]
-b1List = [10, 14, 22, 39, 33, 39, 11, 13, 28, 43, 99]
-b2List = [12, 13, 25, 15, 30, 18, 22, 28, 15, 26, 99]
-b3List = [22, 10, 42, 25, 50, 19, 40, 25, 39, 15, 99]
+questionAnsList = [12, 25, 10, 16, 30, 19, 50, 23, 28, 39, 99]
+b1List = [10, 21, 22, 39, 33, 39, 11, 13, 28, 43, 99]
+b2List = [12, 28, 25, 15, 30, 18, 22, 28, 15, 26, 99]
+b3List = [22, 25, 10, 25, 50, 19, 40, 25, 39, 15, 99]
 b4List = [18, 19, 12, 16, 44, 22, 50, 23, 21, 39, 99]
 
 # Setting Starting Values
